@@ -12,7 +12,7 @@ public class PerfumesRepository {
     private List<Perfumes> listaPerfumes = new ArrayList<>();
     public PerfumesRepository() {
         //Agregar perfumes por defecto
-        listaPerfumes.add(new Perfumes(1, "Y", "YSL", 119990, 100));
+        listaPerfumes.add(new Perfumes(1, "Y", "YSL", 119990, 100,"Aroma fresco",30));
     }
     //Metodo que retorna todos los perfumes
     public List<Perfumes> obtenerPefume(){
@@ -54,6 +54,8 @@ public class PerfumesRepository {
         perfume.setMarca(per.getMarca());
         perfume.setPrecio(per.getPrecio());
         perfume.setCantidadMl(per.getCantidadMl());
+        perfume.setDescripcion(per.getDescripcion());
+        perfume.setStock(per.getStock());
         
         listaPerfumes.add(perfume);
 

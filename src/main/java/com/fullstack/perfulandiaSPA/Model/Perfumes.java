@@ -15,4 +15,6 @@ public class Perfumes {
     private String marca;
     private int precio;
     private int cantidadMl;
+    private String descripcion;
+    private int stock;
 }
