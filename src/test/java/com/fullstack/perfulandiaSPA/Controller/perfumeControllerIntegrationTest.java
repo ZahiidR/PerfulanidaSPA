@@ -24,7 +24,7 @@ public class perfumeControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private perfumeController perfumeService;
+    private perfumeService perfumeService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -36,12 +36,12 @@ public class perfumeControllerIntegrationTest {
                 new Perfumes(2, "Perfume 2", "desconocido", 50000, 20, "neuva fragancia", 10)
         );
 
-        when(perfumeService.getPerfume()).thenReturn(perfumes);
+        when(perfumeService.getPerfumes()).thenReturn(perfumes);
 
         mockMvc.perform(get("/api/v1/perfumes"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].nombrePerfume").value("vip 212"));
+                .andExpect(jsonPath("$[0].nombrePerfume").value("perfume1"));
     }
 
     @Test
@@ -61,27 +61,27 @@ public class perfumeControllerIntegrationTest {
     void buscarPerfume_porId_existente() throws Exception {
         Perfumes perfumes = new Perfumes(1, "vip 212", "carolina herrera", 89990, 200, "fragancia fresca", 20);
 
-        when(perfumeService.getPerfumes(5)).thenReturn(perfumes);
+        when(perfumeService.getPerfumeId(5)).thenReturn(perfumes);
 
         mockMvc.perform(get("/api/v1/perfumes/5"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombrePerfumes").value("Buscado"));
+                .andExpect(jsonPath("$.nombrePerfume").value("vip212"));
     }
 
     @Test
-    void eliminarLibro_existente() throws Exception {
-        when(libroService.deleteLibro(3)).thenReturn("producto eliminado");
+    void eliminarPerfumes_existente() throws Exception {
+        when(perfumeService.deletePerfume(3)).thenReturn("producto eliminado");
 
-        mockMvc.perform(delete("/api/v1/libros/3"))
+        mockMvc.perform(delete("/api/v1/perfumes/3"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("producto eliminado"));
     }
 
     @Test
-    void totalLibrosV2_debeRetornarCantidad() throws Exception {
-        when(libroService.totalLibrosV2()).thenReturn(10);
+    void totalPerfumesv2_debeRetornarCantidad() throws Exception {
+        when(perfumeService.totalPerfumesv2()).thenReturn(10);
 
-        mockMvc.perform(get("/api/v1/libros/total"))
+        mockMvc.perform(get("/api/v1/perfumes/total"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("10"));
     }
