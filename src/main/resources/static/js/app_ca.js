@@ -65,7 +65,7 @@ const carrito = (() => {
             alert("Carrito vaciado");
             listarCarrito();
         }
-        //////SEGUIR MODIFICANDO
+        
     }
     // Función para confirmar la compra
     // Se asume que el precio total se obtiene de la API o se calcula en el frontend
@@ -83,11 +83,11 @@ const carrito = (() => {
         }
     }
 
-    return { listarCarrito, agregarLibro, eliminarLibro, vaciarCarrito, confirmarCompra };
+    return { listarCarrito, agregarPerfume, eliminarPerfume, vaciarCarrito, confirmarCompra };
 })();
 
 // Cargar carrito al iniciar
 document.addEventListener("DOMContentLoaded", () => {
-    app.listarLibros();        // del módulo anterior
+    app.listarPerfumes();        // del módulo anterior
     carrito.listarCarrito();   // nuevo módulo
 });

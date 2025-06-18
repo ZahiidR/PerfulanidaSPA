@@ -31,7 +31,7 @@ public class ControlStockController {
         return controlserv.getControlStocks();
     }
 
-    @PostMapping("{id}")
+    @PostMapping
     public ControlStock agregarControlStock(@RequestBody ControlStock controlStock){
         return controlserv.saveControlStock(controlStock);
     }
@@ -41,8 +41,8 @@ public class ControlStockController {
         return controlserv.getControlStocks(id);
     }
 
-    @PutMapping("{id}")
-    public ControlStock actualizaControlStock(@PathVariable int id, ControlStock controlStock){
+    @PutMapping("/{id}")
+    public ControlStock actualizaControlStock(@PathVariable int id, @RequestBody ControlStock controlStock){
         return controlserv.updateControlStock(controlStock);
     }
 

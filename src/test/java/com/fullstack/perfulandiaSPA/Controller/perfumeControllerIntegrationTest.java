@@ -41,7 +41,7 @@ public class perfumeControllerIntegrationTest {
         mockMvc.perform(get("/api/v1/perfumes"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].nombrePerfume").value("perfume1"));
+                .andExpect(jsonPath("$[0].nombrePerfume").value("vip 212"));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class perfumeControllerIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(perfumes)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombrePerfume").value("vip 212"));
+                .andExpect(jsonPath("$.nombrePerfume").value("perfume1"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class perfumeControllerIntegrationTest {
 
         mockMvc.perform(get("/api/v1/perfumes/5"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombrePerfume").value("vip212"));
+                .andExpect(jsonPath("$.nombrePerfume").value("vip 212"));
     }
 
     @Test

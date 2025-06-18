@@ -34,7 +34,7 @@ public class ReporteService {
         return reporteRepository.obtenerReportes().size();
     }
 
-    // LA ACCIÓN LA HACE EL MODELO
+    
     public int totalReporteV2() {
         return reporteRepository.totalReportes();
     }

@@ -12,7 +12,7 @@ public class perfumeService {
     private PerfumesRepository perfumeRepo;
 
     public List<Perfumes> getPerfumes(){
-        return perfumeRepo.obtenerPefume();
+        return perfumeRepo.obtenerPefumes();
     }
 
     public Perfumes savePerfume(Perfumes perfume){
@@ -33,7 +33,7 @@ public class perfumeService {
     }
 
     public int totalPerfumes(){
-        return perfumeRepo.obtenerPefume().size();
+        return perfumeRepo.obtenerPefumes().size();
     }
 
     public int totalPerfumesv2(){

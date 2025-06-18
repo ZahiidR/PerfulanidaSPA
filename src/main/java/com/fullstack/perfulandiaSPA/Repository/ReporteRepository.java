@@ -11,7 +11,7 @@ public class ReporteRepository {
         // Agregar reportes por defecto
         listaReportes.add(new Reporte(1,"Producto comprado con éxito","usuario1@gmaill.com","RECIBIDO"));
         listaReportes.add(new Reporte(2, "Producto enviado con exito", "usuario2@gmail.com", "EN PROCESO"));
-        listaReportes.add(new Reporte(3, "Producto sin tock", "usuario3@gmaiñl.com","EN PROCESO" ));
+        listaReportes.add(new Reporte(3, "Producto sin stock", "usuario3@gmaiñl.com","EN PROCESO" ));
 
     }  
     // Metodo que retorna todos los reportes

@@ -15,7 +15,7 @@ public class PerfumesRepository {
         listaPerfumes.add(new Perfumes(1, "Y", "YSL", 119990, 100,"Aroma fresco",30));
     }
     //Metodo que retorna todos los perfumes
-    public List<Perfumes> obtenerPefume(){
+    public List<Perfumes> obtenerPefumes(){
         return listaPerfumes;
     }
 
@@ -78,6 +78,8 @@ public class PerfumesRepository {
          perfumes1.setMarca(per.getMarca());
          perfumes1.setPrecio(per.getPrecio());
          perfumes1.setCantidadMl(per.getCantidadMl());
+         perfumes1.setDescripcion(per.getDescripcion());
+         perfumes1.setStock(per.getStock());
  
          listaPerfumes.set(idPosicion, perfumes1);
          return perfumes1; 

@@ -36,7 +36,7 @@ public class carritoControllerIntegrationTest {
 
         mockMvc.perform(post("/api/v1/carrito/agregar/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Perfume agregado al carrito: Clean Code"));
+                .andExpect(content().string("Perfume agregado al carrito: vip 212"));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class carritoControllerIntegrationTest {
 
         mockMvc.perform(get("/api/v1/carrito"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nombrePerfume").value("Clean Code"));
+                .andExpect(jsonPath("$[0].nombrePerfume").value("vip 212"));
     }
 
     @Test

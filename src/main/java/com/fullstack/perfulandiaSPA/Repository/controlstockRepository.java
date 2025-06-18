@@ -14,7 +14,7 @@ public class controlstockRepository {
     public controlstockRepository() {
         //Agregar stock por defecto
         Perfumes perfumes = new Perfumes(1,"Y", "YSL", 11990,100,"AROMA FRESCO",30);
-        listaStocks.add(new ControlStock()); //AQUI SE LE PONE ALGO EN LOS PARAMETROS??
+        listaStocks.add(new ControlStock(1,perfumes,30,"18-06-2025")); //AQUI SE LE PONE ALGO EN LOS PARAMETROS??
     }
     //Metodo que retorna todos los stock
     public List<ControlStock> obtenerStocks(){
