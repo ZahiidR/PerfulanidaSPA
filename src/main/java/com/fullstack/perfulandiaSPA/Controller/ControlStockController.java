@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/v1/controlStock")
+@RequestMapping("/api/v1/stock")
 public class ControlStockController {
      @Autowired
     private ControlStockService controlserv;
@@ -31,7 +31,7 @@ public class ControlStockController {
         return controlserv.getControlStocks();
     }
 
-    @PostMapping
+    @PostMapping("/agregar/{id}")
     public ControlStock agregarControlStock(@RequestBody ControlStock controlStock){
         return controlserv.saveControlStock(controlStock);
     }
@@ -46,7 +46,7 @@ public class ControlStockController {
         return controlserv.updateControlStock(controlStock);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public String eliminarControl(@PathVariable int id){
         return controlserv.deleteControl(id);
     }

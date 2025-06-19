@@ -29,7 +29,7 @@ public class perfumeController {
         return perfumeserv.getPerfumes();
     }
 
-    @PostMapping("{id}")
+    @PostMapping
     public Perfumes agregarPerfume(@RequestBody Perfumes perfume){
         return perfumeserv.savePerfume(perfume);
     }
@@ -39,12 +39,12 @@ public class perfumeController {
         return perfumeserv.getPerfumeId(id);
     }
 
-    @PutMapping("{id}")
-    public Perfumes actualizaPerfumes(@PathVariable int id, Perfumes perfume){
+    @PutMapping("/{id}")
+    public Perfumes actualizaPerfumes(@PathVariable int id, @RequestBody Perfumes perfume){
         return perfumeserv.updatePerfume(perfume);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public String eliminarPerfume(@PathVariable int id){
         return perfumeserv.deletePerfume(id);
     }

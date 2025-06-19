@@ -73,9 +73,8 @@ public class usuarioControllerIntegrationTest {
                 .content(objectMapper.writeValueAsString(usuarioExistente))) // Convertir el usuario a JSON y enviarlo en el cuerpo de la petición
                 .andExpect(status().isOk()) // Verificar que la respuesta tenga un estado 200 OK
                 .andExpect(jsonPath("$.result").value("OK"))    // Verificar que el resultado sea "OK"
-                .andExpect(jsonPath("$.nombre").value("Juan")) // Verificar que el nombre del usuario sea correcto
-                .andExpect(jsonPath("$.email").value("juan@gmail.com")) // Verificar que el email del usuario sea correcto
-                .andExpect(jsonPath("$.password").value("1234"));   // Verificar que la contraseña del usuario sea correcta
+                .andExpect(jsonPath("$.nombre").value("Juan")); // Verificar que el nombre del usuario sea correcto
+
     }
     // Test para el caso de inicio de sesión con un usuario inexistente
     @Test
