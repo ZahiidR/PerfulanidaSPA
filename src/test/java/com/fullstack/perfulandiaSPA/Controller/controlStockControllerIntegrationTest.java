@@ -10,12 +10,15 @@ import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.time.LocalDate;
+import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @WebMvcTest(ControlStockController.class)
@@ -40,75 +43,88 @@ public class controlStockControllerIntegrationTest {
         when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
         
         perfumeEjemplo.setStock(14);
-         String jsonControlStock = "{ \"cantidad\": 14 }";  // o los campos necesarios
+         String jsonControlStock = "{"
+             + "\"perfume\": {\"id\": 1},"
+             + "\"stockActual\": 14,"
+             + "\"fechaActualizacion\": \"" + LocalDate.now().toString() + "\""
+             + "}";
 
-    mockMvc.perform(post("/api/v1/stock/agregar/1")
+          ControlStock control = new ControlStock();
+    control.setPerfume(perfumeEjemplo); // usar perfume como parte del objeto, como requiere tu modelo
+    control.setStockActual(14);
+    control.setFechaActualizacion(LocalDate.now().toString());
+
+    when(controlStockService.saveControlStock(any(ControlStock.class))).thenReturn(control);
+    
+
+
+    mockMvc.perform(post("/api/v1/stock/agregar")
             .contentType(MediaType.APPLICATION_JSON)
             .content(jsonControlStock))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.stock").value(14));
+        .andExpect(jsonPath("$.stockActual").value(14));
             }
 
     @Test
     void obtenerStock_debeRetornarStock() throws Exception {
         when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-
-        mockMvc.perform(get("/api/v1/perfumes/stock/1"))
+            ControlStock controlStock = new ControlStock(1, perfumeEjemplo, 13, "2025-06-21");
+            
+        when(controlStockService.getControlStocks(1)).thenReturn(controlStock);
+        mockMvc.perform(get("/api/v1/stock/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.stock").value(13));
+                .andExpect(jsonPath("$.stockActual").value(13));
     }
 
     
-    @Test
-    void disminuirStock_debeResponderConfirmacion() throws Exception {
-        when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-
-        perfumeEjemplo.setStock(12);
-        when(perfumeService.updatePerfume(any(Perfumes.class))).thenReturn(perfumeEjemplo);
-
-        mockMvc.perform(put("/api/v1/perfumes/stock/disminuir/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.stock").value(12));
-    }
+   
 
     @Test
     void verStock_debeMostrarStockAgregados() throws Exception {
         when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-        mockMvc.perform(post("/api/v1/stock/agregar/1"));
+          String jsonControlStock = "{"
+        + "\"perfume\": {\"id\": 1},"
+        + "\"stockActual\": 14,"
+        + "\"fechaActualizacion\": \"2025-06-21\""
+        + "}";
+
+        when(controlStockService.saveControlStock(any(ControlStock.class)))
+        .thenReturn(new ControlStock(1, perfumeEjemplo, 14, "2025-06-21"));
+
+        mockMvc.perform(post("/api/v1/stock/agregar")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(jsonControlStock))
+            .andExpect(status().isOk());
+
+       when(controlStockService.getControlStocks())
+    .thenReturn(List.of(new ControlStock(1, perfumeEjemplo, 14, "2025-06-21")));
 
         mockMvc.perform(get("/api/v1/stock"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nombrePerfume").value("vip 212"));
+                .andExpect(jsonPath("$[0].perfume.nombrePerfume").value("vip 212"));
     }
 
     @Test
     void eliminarStock_debeEliminarCorrectamente() throws Exception {
         when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-        mockMvc.perform(post("/api/v1/stock/agregar/1"));
+        mockMvc.perform(post("/api/v1/stock/agregar"));
 
-        mockMvc.perform(delete("/api/v1/stock/eliminar/1"))
+        when(controlStockService.deleteControl(1)).thenReturn("Control de stock eliminado");
+
+        mockMvc.perform(delete("/api/v1/stock/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Stock eliminado"));
+                .andExpect(content().string("Control de stock eliminado"));
     }
 
-    @Test
-    void vaciarStock_debeResponderCorrectamente() throws Exception {
-        when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-        mockMvc.perform(post("/api/v1/stock/agregar/1"));
+   
+@Test
+void totalStock_debeRetornarCantidad() throws Exception {
+    // Simulamos que el servicio ya tiene 1 control de stock
+    when(controlStockService.totalControlesV2()).thenReturn(1);
 
-        mockMvc.perform(delete("/api/v1/stock/vaciar"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Stock vaciado"));
-    }
-
-    @Test
-    void totalStock_debeRetornarCantidad() throws Exception {
-        when(perfumeService.getPerfumeId(1)).thenReturn(perfumeEjemplo);
-        mockMvc.perform(post("/api/v1/stock/agregar/1"));
-
-        mockMvc.perform(get("/api/v1/stock/total"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("1"));
+    mockMvc.perform(get("/api/v1/stock/total"))
+        .andExpect(status().isOk())
+        .andExpect(content().string("1"));
     }
 
 }

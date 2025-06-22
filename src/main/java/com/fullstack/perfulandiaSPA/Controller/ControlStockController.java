@@ -31,11 +31,12 @@ public class ControlStockController {
         return controlserv.getControlStocks();
     }
 
-    @PostMapping("/agregar/{id}")
+    @PostMapping("/agregar")
     public ControlStock agregarControlStock(@RequestBody ControlStock controlStock){
         return controlserv.saveControlStock(controlStock);
     }
 
+    
     @GetMapping("/{id}")
     public ControlStock buscarControlStock(@PathVariable int id){
         return controlserv.getControlStocks(id);
@@ -44,7 +45,10 @@ public class ControlStockController {
     @PutMapping("/{id}")
     public ControlStock actualizaControlStock(@PathVariable int id, @RequestBody ControlStock controlStock){
         return controlserv.updateControlStock(controlStock);
+    
     }
+
+
 
     @DeleteMapping("/{id}")
     public String eliminarControl(@PathVariable int id){
