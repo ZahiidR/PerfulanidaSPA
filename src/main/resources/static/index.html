@@ -125,51 +125,52 @@
 <body>
   
   <!-- Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">
-        <i class="fas fa-spray-can-sparkles me-2"></i>Perfulandia SPA
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#men">Hombres</a></li>
-          <li class="nav-item"><a class="nav-link" href="#women">Mujeres</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-        </ul>
-        <div class="d-flex align-items-center">
-          <div class="dropdown me-3">
-            <button class="btn btn-outline-primary position-relative" type="button" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">0</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end p-3 cart-dropdown" aria-labelledby="cartDropdown">
-              <div id="cartItems" class="cart-items">
-                <p class="text-center empty-cart-message">Tu carrito está vacío</p>
-              </div>
-              <div class="d-flex justify-content-between mt-3">
-                <span>Total:</span>
-                <span class="fw-bold cart-total">$0.00</span>
-              </div>
-              <div class="d-grid gap-2 mt-3">
-                <button class="btn btn-primary btn-sm" onclick="window.location.href='cart.html'">Ver carrito</button>
-                <button class="btn btn-success btn-sm" onclick="cart.checkout()">Pagar</button>
-              </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <i class="fas fa-spray-can-sparkles me-2"></i>Perfulandia SPA
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#men">Hombres</a></li>
+        <li class="nav-item"><a class="nav-link" href="#women">Mujeres</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <div class="dropdown me-3">
+          <button class="btn btn-outline-primary position-relative" type="button" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </button>
+
+          <div class="dropdown-menu dropdown-menu-end p-3 cart-dropdown" aria-labelledby="cartDropdown">
+            <div id="cartItems" class="cart-items">
+              <p class="text-center empty-cart-message">Tu carrito está vacío</p>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <span>Total:</span>
+              <span class="fw-bold cart-total">$0.00</span>
+            </div>
+            <div class="d-grid gap-2 mt-3">
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='cart.html'">Ver carrito</button>
+              <button class="btn btn-success btn-sm" onclick="cart.checkout()">Pagar</button>
             </div>
           </div>
-          <div id="userSection">
-            <span class="user-greeting me-2">Hola, <span id="usernameDisplay"></span></span>
-            <a href="login.html" class="btn btn-outline-primary login-btn">Iniciar sesión</a>
-            <a href="admin.html" class="btn btn-sm btn-secondary ms-2 admin-link">Admin</a>
-            <button class="btn btn-outline-danger ms-2 logout-btn" style="display: none;" onclick="auth.logout()">Cerrar sesión</button>
-          </div>
+        </div>
+        <div id="userSection">
+          <span class="user-greeting me-2">Hola, <span id="usernameDisplay"></span></span>
+          <a href="login.html" class="btn btn-outline-primary login-btn">Iniciar sesión</a>
+          <a href="admin.html" class="btn btn-sm btn-secondary ms-2 admin-link">Admin</a>
+          <button class="btn btn-outline-danger ms-2 logout-btn" style="display: none;" onclick="auth.logout()">Cerrar sesión</button>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Hero Carousel -->
   <div id="perfumeCarousel" class="carousel slide" data-bs-ride="carousel">
