@@ -506,7 +506,7 @@
         const cartItemsContainer = document.getElementById('cartItems');
         
         cartCount.textContent = this.count();
-        cartTotal.textContent = $${this.total()};
+        cartTotal.textContent = $$(this.total());
         
         if (cartItemsContainer) {
           cartItemsContainer.innerHTML = '';
@@ -550,7 +550,7 @@
           return;
         }
         
-        alert(Compra realizada por $${this.total()}. ¡Gracias por tu compra!);
+        alert("Compra realizada por $$"(this.total()), "¡Gracias por tu compra!");
         this.clear();
         window.location.href = 'index.html';
       }
@@ -680,7 +680,7 @@
       if (product) {
         document.querySelector('.product-name').textContent = product.name;
         document.querySelector('.product-brand').textContent = product.brand;
-        document.querySelector('.product-price').textContent = $${product.price.toLocaleString('es-CL')};
+        document.querySelector('.product-price').textContent = $$(product.price.toLocaleString('es-CL'));
         document.querySelector('.product-image').src = product.image;
         document.querySelector('.size-value').textContent = product.size;
         document.querySelector('.product-description').textContent = product.description;
