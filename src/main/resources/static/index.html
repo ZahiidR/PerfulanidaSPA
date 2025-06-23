@@ -206,6 +206,349 @@
       <div class="row g-4" id="featuredProducts">
         <!-- Products will be loaded dynamically -->
       </div>
+        <h4 id="Hombres" style="text-align: center;">Hombres</h4>
+      <style>
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .product-card {
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: sans-serif;
+    background: #fff;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .brand {
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 8px;
+  }
+
+  .old-price {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 6px;
+  }
+
+  .discount {
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+
+  .tag {
+    font-size: 12px;
+    color: green;
+    margin: 3px 0;
+  }
+
+  .stars {
+    font-size: 14px;
+    color: gold;
+  }
+
+  .reviews {
+    font-size: 12px;
+    color: #777;
+  }
+
+  .add-to-cart {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .add-to-cart:hover {
+    background: #444;
+  }
+</style>
+
+<section>
+  <div class="product-list">
+
+    <div class="product-card">
+      <img src="images/SAUVAGEEAU.webp" alt="Dior Sauvage">
+      <div class="brand">DIOR</div>
+      <div class="title">Perfume Hombre Sauvage Eau de toilette</div>
+      <div class="price">$144.000</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★★</div>
+      <div class="reviews">(33)</div>
+      <button class="add-to-cart" onclick="addToCart('p1', 'Perfume Hombre Sauvage Eau de toilette', 144000, 'images/SAUVAGEEAU.webp')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/VersaceEros.jpg" alt="Versace Eros">
+      <div class="brand">VERSACE</div>
+      <div class="title">Eros 100ML EDT Hombre</div>
+      <div class="price">$60.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★☆</div>
+      <div class="reviews">(1323)</div>
+      <button class="add-to-cart" onclick="addToCart('p2', 'Eros 100ML EDT Hombre', 60990, 'images/VersaceEros.jpg')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/LeMaleElixir.webp" alt="Le Male Elixir Jean Paul Gaultier">
+      <div class="brand">JEAN PAUL GAULTIER</div>
+      <div class="title">Perfume Hombre Le Male Elixir Parfum 125ML</div>
+      <div class="price">$125.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★★</div>
+      <div class="reviews">(3160)</div>
+      <button class="add-to-cart" onclick="addToCart('p3', 'Le Male Elixir Parfum 125ML', 125990, 'images/LeMaleElixir.webp')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/LeBeauEDT.webp" alt="Le Beau Jean Paul Gaultier">
+      <div class="brand">JEAN PAUL GAULTIER</div>
+      <div class="title">Perfume Hombre Le Beau EDP 125ML</div>
+      <div class="price">$114.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★☆</div>
+      <div class="reviews">(283)</div>
+      <button class="add-to-cart" onclick="addToCart('p4', 'Le Beau EDP 125ML', 114990, 'images/LeBeauEDT.webp')">Agregar al Carro</button>
+    </div>
+
+  </div>
+</section>
+  <!-- seccion mujeres -->
+           <h4 id="Mujeres" style="text-align: center;">Mujeres</h4>
+      <style>
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .product-card {
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: sans-serif;
+    background: #fff;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .brand {
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 8px;
+  }
+
+  .old-price {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 6px;
+  }
+
+  .discount {
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+
+  .tag {
+    font-size: 12px;
+    color: green;
+    margin: 3px 0;
+  }
+
+  .stars {
+    font-size: 14px;
+    color: gold;
+  }
+
+  .reviews {
+    font-size: 12px;
+    color: #777;
+  }
+
+  .add-to-cart {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .add-to-cart:hover {
+    background: #444;
+  }
+</style>
+
+<div class="product-list">
+  <div class="product-card">
+    <img src="images/RALPHLAUREN.webp" alt="RALPH LAUREN">
+    <div class="brand">RALPH LAUREN</div>
+    <div class="title">Perfume Mujer Ralph EDT 100ml Ralph Lauren</div>
+      <span class="price">$59.990</span>
+      <span class="old-price">$119.990</span>
+      <span class="discount">-50%</span>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(33)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/RABANNE.webp" alt="RABANNE">
+    <div class="brand">RABANNE</div>
+    <div class="title">Perfume Mujer Fame Intense 80ML Refillable Rabanne</div>
+    <div class="price">$99.990
+      <span class="old-price">$129.990</span>
+      <span class="discount">-23%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(765)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/CAROLINAHERRRERA.webp" alt="CAROLINA HERRERA">
+    <div class="brand">CAROLINA HERRERA</div>
+    <div class="title">Perfume Mujer Carolina Herrera Edt 50Ml Carolina Herrera</div>
+    <div class="price">$53.990
+      <span class="old-price">$89.990</span>
+      <span class="discount">-40%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(642)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/212.webp" alt="CAROLINA HERRERA">
+    <div class="brand">CAROLINA HERRERA</div>
+    <div class="title">Perfume Mujer 212 Heroes Edp 80Ml Carolina Herrera</div>
+    <div class="price">$119.990
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★☆</div>
+    <div class="reviews">(283)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+    </div>
+    <div class="product-list">
+  <div class="product-card">
+    <img src="images/VERSACEMUJER.webp" alt="Versace">
+    <div class="brand">VERSACE</div>
+    <div class="title">Perfume Mujer Yellow Diamond Intense EDP 90Ml Versace</div>
+      <span class="price">$69.990</span>
+      <span class="old-price">$110.990</span>
+      <span class="discount">-37%</span>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(334)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/FERRAGAMO.webp" alt="FERRAGAMO">
+    <div class="brand">FERRAGAMO</div>
+    <div class="title">Perfume Mujer Signorina Edp 100Ml Ferragamo</div>
+    <div class="price">$100.300
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(715)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/ARMANIMUJER.webp" alt="GIORGIO ARMANI">
+    <div class="brand">GIORGIO ARMANI</div>
+    <div class="title">Perfume Mujer Acqua Di Gioia Eau De Parfum 30ml Giorgio Armani</div>
+    <div class="price">$44.990
+      <span class="old-price">$63.990</span>
+      <span class="discount">-40%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(351)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/VERSACEMUJER2.webp" alt="VERSACE">
+    <div class="brand">VERSACE</div>
+    <div class="title">Perfume Mujer Bright Crystal Parfum 90 ml Versace</div>
+    <div class="price">$152.990
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★☆</div>
+    <div class="reviews">(212)</div>
+    <button class="add-to-cart">Agregar al Carro</button>
+  </div>
     </div>
   </section>
 
@@ -219,7 +562,7 @@
             <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/img/6fe77fcad9614c799944a901d1cc568a/8f93bb43-e992-4047-adaf-b0f529545c31.png?x-oss-process=image/resize,w_640,m_lfit/format,webp')">
               <div class="category-overlay">
                 <h3>Hombres</h3>
-                <a href="#" class="btn btn-outline-light">Ver colección</a>
+                <a href="#Hombres" class="btn btn-outline-light">Ver colección</a>
               </div>
             </div>
           </div>
@@ -229,7 +572,7 @@
             <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/sd-gen-save-img/299151556-ff000c861d12edf337d54500a680afcb565835b351cba338e2ee91a38e4ae99a.png?x-oss-process=image/resize,w_764,m_lfit/format,webp')">
               <div class="category-overlay">
                 <h3>Mujeres</h3>
-                <a href="#" class="btn btn-outline-light">Ver colección</a>
+                <a href="#Mujeres" class="btn btn-outline-light">Ver colección</a>
               </div>
             </div>
           </div>
@@ -550,7 +893,7 @@
           return;
         }
         
-        alert("Compra realizada por $$"(this.total()), "¡Gracias por tu compra!");
+        alert("Compra realizada por ", $$(this.total()), "¡Gracias por tu compra!");
         this.clear();
         window.location.href = 'index.html';
       }
@@ -760,5 +1103,26 @@
       </div>
     </div>
   </div>
+  <script>
+  function addToCart(id, name, price, image) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const index = cartItems.findIndex(item => item.id === id);
+
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.push({
+        id,
+        name,
+        price,
+        image,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    alert(`${name} fue agregado al carrito`);
+  }
+</script>
 </body>
 </html>
