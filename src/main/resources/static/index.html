@@ -760,7 +760,7 @@ const cart = {
 
     // Actualizar contador y total
     if (cartCount) cartCount.textContent = this.count();
-    if (cartTotal) cartTotal.textContent = $${this.total()};
+    if (cartTotal) cartTotal.textContent = $$(this.total());
 
     // Actualizar contenido del dropdown del carrito
     if (cartItemsContainer) {
@@ -1038,7 +1038,7 @@ const cart = {
     }
 
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    alert(${name} fue agregado al carrito);
+    alert($(name, "fue agregado al carrito"));
   }
   
 </script>
