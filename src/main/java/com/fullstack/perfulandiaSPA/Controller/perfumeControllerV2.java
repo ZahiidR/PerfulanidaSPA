@@ -6,13 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+//Importar las librerias de swagger para la documentacion de las API
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.fullstack.perfulandiaSPA.Assemblers.perfumeModelAssembler;
 import com.fullstack.perfulandiaSPA.Controller.perfumeController;
@@ -30,11 +49,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v2/perfumes")
+@Tag(name = "Perfume", description = "Operaciones sobre el catalogo de Perfumes")
 public class perfumeControllerV2 {
 
     @Autowired
     private perfumeService perfumeserv;
 
+    @Operation(summary = "Desplegar el catalogo de los producto", description = "Despliega una lista de todos los perfumes disponibles")
     @Autowired
     private perfumeModelAssembler assembler;
 
@@ -50,6 +71,7 @@ public class perfumeControllerV2 {
             linkTo(methodOn(perfumeControllerV2.class).listarPerfumes()).withSelfRel());
     }
 
+    @Operation(summary = "Agregar un perfume al catalogo de los productos", description = "Agrega un nuevo perfume al catalogo")
     @PostMapping(produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<Perfumes>> agregarPerfume(@RequestBody Perfumes perfume) {
         Perfumes crear = perfumeserv.savePerfume(perfume);
