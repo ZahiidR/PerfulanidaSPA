@@ -55,10 +55,10 @@ public class perfumeControllerV2 {
     @Autowired
     private perfumeService perfumeserv;
 
-    @Operation(summary = "Desplegar el catalogo de los producto", description = "Despliega una lista de todos los perfumes disponibles")
+    
     @Autowired
     private perfumeModelAssembler assembler;
-
+    @Operation(summary = "Desplegar el catalogo de los producto", description = "Despliega una lista de todos los perfumes disponibles")
     @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
     public CollectionModel<EntityModel<Perfumes>> listarPerfumes() {
         // Recoge la lista de perfumes y la convierte a EntityModel usando el assembler
@@ -80,21 +80,25 @@ public class perfumeControllerV2 {
                 .body(assembler.toModel(crear));
     }
 
+    @Operation(summary = "Buscar un perfume por ID", description = "Busca un perfume especifico por su ID")
     @GetMapping("/{id}")
     public Perfumes buscarPerfumes(@PathVariable int id) {
         return perfumeserv.getPerfumeId(id);
     }
 
+    @Operation(summary = "Actualizar la informacion de un producto", description = "Actualiza los detalles de un perfume existente")
     @PutMapping("/{id}")
     public Perfumes actualizaPerfumes(@PathVariable int id, @RequestBody Perfumes perfume) {
         return perfumeserv.updatePerfume(perfume);
     }
 
+    @Operation(summary = "Eliminar un producto del catalogo", description = "Elimina un perfume del catalogo por su ID")
     @DeleteMapping("/{id}")
     public String eliminarPerfume(@PathVariable int id) {
         return perfumeserv.deletePerfume(id);
     }
    
+    @Operation(summary = "Contar el total de los perfumes", description = "Devuelve el numero total de perfumes en la lista")
     @GetMapping("/total")
     public int totalPerfumesv2() {
         return perfumeserv.totalPerfumesv2();
