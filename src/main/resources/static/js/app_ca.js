@@ -1,93 +1,117 @@
-const carrito = (() => {
-    const API = "/api/v1/carrito";
-    
-    async function listarCarrito() {
-        try {
-            const response = await fetch(API); 
-            const perfumes = await response.json();
+// app_car.js
+const cartApiUrl = "http://localhost:8080/api/v1/carrito"; // Cambia por tu URL real si es diferente
 
-            const tbody = document.querySelector("#tablaCarrito tbody"); // Obtener el tbody de la tabla
-            const totalSpan = document.getElementById("totalCarrito"); // Obtener el span del total
-            const totalPrecio = document.getElementById("totalPrecio"); // Obtener el span del total precio
-            tbody.innerHTML = ""; // Limpiar el tbody antes de agregar nuevos elementos
-            totalSpan.textContent = perfumes.length; // Mostrar la cantidad de perfumes en el carrito
+const cartFrontend = {
+  items: [],
 
-            let sumaTotal = 0;// Inicializar sumaTotal
-            
-            perfumes.forEach(perfumes => { // Iterar sobre cada perfume en el carrito
-                sumaTotal += perfume.precio ?? 0;// Asumiendo que cada perfume tiene un precio
-                const fila = `
-                    <tr>
-                        <td>${perfumes.id}</td>
-                        <td>${perfumes.nombrePerfume}</td>
-                        <td>${perfumes.marca}</td>
-                        <td>${perfumes.precio}</td>
-                        <td>${perfumes.cantidadMl}</td>
-                        <td>${perfumes.descripccion}</td>
-                        <td>${perfumes.stock}</td>
-                        <td> 
-                            <button class="btn btn-sm btn-danger" onclick="carrito.eliminarPerfumes(${perfumes.id})">🗑️</button> 
-                        </td> 
-                    </tr>
-                `;
-                tbody.innerHTML += fila; // Agregar la fila al tbody
-            });
-            totalPrecio.textContent = sumaTotal; // Mostrar el total en el span
+  // Cargar carrito desde el backend
+  loadFromServer() {
+    fetch(cartApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.items = data;
+        this.updateUI();
+      })
+      .catch(error => console.error("Error cargando carrito:", error));
+  },
 
-        } catch (err) {
-            console.error("Error al cargar carrito", err);
+  // Agregar producto al carrito vía backend
+  addToCart(id) {
+    fetch(${cartApiUrl}/agregar/${id}, { method: "POST" })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
         }
+        throw new Error("Error al agregar producto");
+      })
+      .then(() => {
+        this.loadFromServer(); // Actualizar UI
+        alert("Producto agregado al carrito");
+      })
+      .catch(error => alert(error.message));
+  },
+
+  // Eliminar producto del carrito
+  removeFromCart(productId) {
+    fetch(${cartApiUrl}/eliminar/${productId}, { method: "DELETE" })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Error al eliminar producto");
+      })
+      .then(() => {
+        this.loadFromServer();
+      })
+      .catch(error => alert(error.message));
+  },
+
+  // Vaciar carrito
+  clearCart() {
+    fetch(${cartApiUrl}/vaciar, { method: "DELETE" })
+      .then(response => {
+        if (response.ok) {
+          this.items = [];
+          this.updateUI();
+        } else {
+          throw new Error("No se pudo vaciar el carrito");
+        }
+      })
+      .catch(error => alert(error.message));
+  },
+
+  // Obtener cantidad total de productos
+  getTotalItems() {
+    fetch(${cartApiUrl}/total)
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector(".cart-count").textContent = data;
+      });
+  },
+
+  // Obtener precio total del carrito
+  getTotalPrice() {
+    fetch(${cartApiUrl}/precioTotal)
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector(".cart-total").textContent = $${data.totalPrecio};
+      });
+  },
+
+  // Actualizar UI del carrito
+  updateUI() {
+    const cartItemsContainer = document.getElementById("cartItems");
+    const cartCount = document.querySelector(".cart-count");
+
+    if (!cartItemsContainer) return;
+
+    cartItemsContainer.innerHTML = "";
+
+    if (this.items.length === 0) {
+      cartItemsContainer.innerHTML = '<p class="text-center empty-cart-message">Tu carrito está vacío</p>';
+      cartCount.textContent = "0";
+      return;
     }
-    // Funciones para agregar, eliminar y vaciar el carrito
-    async function agregarPerfume(id) {
-        try {
-            await fetch(`${API}/agregar/${id}`, { method: "POST" });
-            alert("Libro agregado al carrito");
-            listarCarrito();
-        } catch (err) {
-            console.error("Error al agregar al carrito", err);
-        }
-    }
 
-    async function eliminarLibro(id) {
-        try {
-            await fetch(`${API}/eliminar/${id}`, { method: "DELETE" });
-            alert("Libro eliminado del carrito");
-            listarCarrito();
-        } catch (err) {
-            console.error("Error al eliminar del carrito", err);
-        }
-    }
+    this.items.forEach(item => {
+      const el = document.createElement("div");
+      el.className = "d-flex justify-content-between align-items-center mb-2";
+      el.innerHTML = `
+        <div>
+          <strong>${item.nombrePerfume}</strong><br>
+          $${item.precio.toFixed(2)} x ${item.cantidad || 1}
+        </div>
+        <button class="btn btn-sm btn-danger" onclick="cartFrontend.removeFromCart(${item.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+      `;
+      cartItemsContainer.appendChild(el);
+    });
 
-    async function vaciarCarrito() {
-        if (confirm("¿Estás seguro de vaciar el carrito?")) {
-            await fetch(`${API}/vaciar`, { method: "DELETE" });
-            alert("Carrito vaciado");
-            listarCarrito();
-        }
-        
-    }
-    // Función para confirmar la compra
-    // Se asume que el precio total se obtiene de la API o se calcula en el frontend
-    async function confirmarCompra() {
-        const total = document.getElementById("totalPrecio").textContent;
-        if (parseInt(total) === 0) {
-            alert("El carrito está vacío.");
-            return;
-        }
+    this.getTotalItems();
+    this.getTotalPrice();
+  }
+};
 
-        if (confirm(`¿Deseas confirmar tu compra por $${total}?`)) {
-            await fetch(`${API}/vaciar`, { method: "DELETE" });
-            alert("¡Gracias por tu compra/reserva!");
-            listarCarrito();
-        }
-    }
-
-    return { listarCarrito, agregarPerfume, eliminarPerfume, vaciarCarrito, confirmarCompra };
-})();
-
-// Cargar carrito al iniciar
-document.addEventListener("DOMContentLoaded", () => {
-    app.listarPerfumes();        // del módulo anterior
-    carrito.listarCarrito();   // nuevo módulo
-});
+// Exportarlo globalmente
+window.cartFrontend = cartFrontend;
