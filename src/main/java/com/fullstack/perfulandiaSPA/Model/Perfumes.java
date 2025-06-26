@@ -18,5 +18,3 @@ public class Perfumes {
     private String descripcion;
     private int stock;
 }
-
-
