@@ -48,7 +48,7 @@ import org.springframework.stereotype.Controller;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v2/perfumes")
+@RequestMapping("http://10.155.64.162:8080/api/v2/perfumes")
 @Tag(name = "Perfume", description = "Operaciones sobre el catalogo de Perfumes")
 public class perfumeControllerV2 {
 

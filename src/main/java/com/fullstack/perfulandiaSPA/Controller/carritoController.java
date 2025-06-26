@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/carrito")
+@RequestMapping("http://10.155.64.162:8080/api/v1/carrito")
 //@Tag se usa para agrupar y etiquetar los controladores dentro de la documentacion
 @Tag(name = "Carrito de Compras", description = "Operaciones sobre el carrito de compras")
 public class carritoController {

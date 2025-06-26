@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/v1/perfumes")
+@RequestMapping("http://10.155.64.162:8080/api/v1/perfumes")
 public class perfumeController {
     @Autowired
     private perfumeService perfumeserv;

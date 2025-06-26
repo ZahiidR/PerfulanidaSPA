@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/usuarios") //url base para peticiones
+@RequestMapping("http://10.155.64.162:8080/api/v1/usuario") //url base para peticiones
 @CrossOrigin
 @Tag(name = "Usuario", description = "Operaciones sobre los usuarios del sistema")
 public class UsuarioController {

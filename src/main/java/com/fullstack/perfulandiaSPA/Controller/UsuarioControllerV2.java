@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v2/usuarios") //url base para peticiones
+@RequestMapping("http://10.155.64.162:8080/api/v2/usuarios") //url base para peticiones
 @CrossOrigin
 
 public class UsuarioControllerV2 {

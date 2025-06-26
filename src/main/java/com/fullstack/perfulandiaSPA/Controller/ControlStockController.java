@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/v1/stock")
+@RequestMapping("http://10.155.64.162:8080/api/v1/stock")
 public class ControlStockController {
      @Autowired
     private ControlStockService controlserv;

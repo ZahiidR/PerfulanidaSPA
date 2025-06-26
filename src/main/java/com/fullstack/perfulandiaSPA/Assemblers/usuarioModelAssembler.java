@@ -24,8 +24,8 @@ public class usuarioModelAssembler implements RepresentationModelAssembler<Usuar
     public @NonNull EntityModel<Usuario> toModel(Usuario u) {
         return EntityModel.of(u, 
         linkTo(methodOn(UsuarioControllerV2.class).registrar
-        (u:null)),withSelfRel(),
+        (null)),withSelfRel(),
         linkTo(methodOn(UsuarioControllerV2.class).login
-        (u)).withRel(rel:"login"));
+        (u)).withRel("login"));
     }    
 }

@@ -1,5 +1,5 @@
 // app_car.js
-const cartApiUrl = "http://localhost:8080/api/v1/carrito"; // Cambia por tu URL real si es diferente
+const cartApiUrl = "http://10.155.64.162:8080/api/v1/carrito"; // Cambia por tu URL real si es diferente
 
 const cartFrontend = {
   items: [],
