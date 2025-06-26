@@ -1,11 +1,18 @@
 package com.fullstack.perfulandiaSPA.Controller;
-import com.fullstack.perfulandiaSPA.Model.Perfumes;
-import com.fullstack.perfulandiaSPA.Service.perfumeService;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import com.fullstack.perfulandiaSPA.Model.Perfumes;
+import com.fullstack.perfulandiaSPA.Service.perfumeService;
 
 @RestController
 @RequestMapping("/api/v1/carrito")
@@ -24,6 +31,16 @@ public class carritoController {
         }
         return "Perfume no encontrado";
     }
+
+    @PostMapping
+public String agregarPerfumeDesdeFront(@RequestBody Perfumes perfume) {
+    if (perfume != null) {
+        carrito.add(perfume);
+        return "Perfume agregado desde frontend: " + perfume.getNombrePerfume();
+    }
+    return "No se pudo agregar el perfume";
+}
+
     //Ver el carrito
     @GetMapping
     public List<Perfumes> verCarrito() {
@@ -43,7 +60,7 @@ public class carritoController {
     }
     //Contar los perfumes en el carrito
     @GetMapping("/total")
-    public int totalPerfumesCarrito() {
+    public int obtenerTotal() {
         return carrito.size();
     }
 }
