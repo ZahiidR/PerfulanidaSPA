@@ -1,28 +1,21 @@
 package com.fullstack.perfulandiaSPA.Controller;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Service.perfumeService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 //Importar las librerias de swagger para la documentacion de las API
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/carrito")
+@RequestMapping("/api/v2/carrito")
 //@Tag se usa para agrupar y etiquetar los controladores dentro de la documentacion
 @Tag(name = "Carrito de Compras", description = "Operaciones sobre el carrito de compras")
-public class carritoController {
+public class carritoControllerV2 {
     private final List<Perfumes> carrito = new ArrayList<>();
 
     @Autowired
@@ -38,16 +31,6 @@ public class carritoController {
         }
         return "Perfume no encontrado";
     }
-
-    @PostMapping
-public String agregarPerfumeDesdeFront(@RequestBody Perfumes perfume) {
-    if (perfume != null) {
-        carrito.add(perfume);
-        return "Perfume agregado desde frontend: " + perfume.getNombrePerfume();
-    }
-    return "No se pudo agregar el perfume";
-}
-
     //Ver el carrito
     @Operation(summary = "Mostrar todos los productos del carrito de compras", description = "Muestra todos los perfumes del carrito")
     @GetMapping
@@ -71,7 +54,7 @@ public String agregarPerfumeDesdeFront(@RequestBody Perfumes perfume) {
     //Contar los perfumes en el carrito
     @Operation(summary = "Contar los productos del carrito de compras", description = "Devuelve el total de los perfumes del carrito de compras")
     @GetMapping("/total")
-    public int obtenerTotal() {
+    public int totalPerfumesCarrito() {
         return carrito.size();
     }
 }

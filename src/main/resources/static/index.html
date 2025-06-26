@@ -8,122 +8,200 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    /* Estilos básicos para el prototipo */
-    body {
-      font-family: 'Roboto', sans-serif;
-      padding-top: 56px;
-    }
-    
-    .navbar {
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .carousel-item {
-      height: 500px;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .carousel-caption {
-      background-color: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 5px;
-    }
-    
-    .category-card {
-      height: 300px;
-      overflow: hidden;
-      border-radius: 8px;
-      position: relative;
-    }
-    
-    .category-image {
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s;
-    }
-    
-    .category-card:hover .category-image {
-      transform: scale(1.05);
-    }
-    
-    .category-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 20px;
-      color: white;
-    }
-    
-    .newsletter {
-      background-color: #6c757d;
-    }
-    
-    .section-title {
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: #0d6efd;
-    }
-    
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: none;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    }
-    
-    .cart-items {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    
-    .empty-cart-message {
-      color: #6c757d;
-    }
-    
-    .admin-link {
-      display: none;
-    }
-    
-    .logged-in .admin-link {
-      display: inline-block;
-    }
-    
-    .logged-in .login-btn {
-      display: none;
-    }
-    
-    .user-greeting {
-      display: none;
-      margin-right: 10px;
-    }
-    
-    .logged-in .user-greeting {
-      display: inline-block;
-    }
-  </style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 56px;
+  }
+
+  .navbar {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .carousel-item {
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .carousel-caption {
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .section-title {
+    position: relative;
+    padding-bottom: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #0d6efd;
+  }
+
+  /* Tarjetas de productos */
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .product-card {
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background: #fff;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 370px;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .brand {
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+    min-height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 8px;
+  }
+
+  .old-price {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 6px;
+  }
+
+  .discount {
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+
+  .tag {
+    font-size: 12px;
+    color: green;
+    margin: 3px 0;
+  }
+
+  .stars,
+  .reviews {
+    font-size: 12px;
+    margin: 3px 0;
+    color: gold;
+  }
+
+  .reviews {
+    color: #777;
+  }
+
+  .add-to-cart {
+    margin-top: auto;
+    padding: 8px 12px;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-to-cart:hover {
+    background: #444;
+  }
+
+  /* Carrito */
+  .cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .empty-cart-message {
+    color: #6c757d;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #1e1e2f;
+  }
+
+  footer a {
+    color: #ccc;
+  }
+
+  footer hr {
+    border-top: 1px solid #444;
+  }
+
+  /* Sistema de login */
+  .user-greeting {
+    display: none;
+    margin-right: 10px;
+  }
+
+  .logged-in .user-greeting {
+    display: inline-block;
+  }
+
+  .logged-in .login-btn {
+    display: none;
+  }
+
+  .admin-link {
+    display: none;
+  }
+
+  .logged-in .admin-link {
+    display: inline-block;
+  }
+</style>
 </head>
 
 <body>
   <!-- Barra de navegación -->
+<<<<<<< HEAD
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
@@ -158,18 +236,69 @@
                 <button class="btn btn-primary btn-sm" onclick="window.location.href='cart.html'">Ver carrito</button>
                 <button class="btn btn-success btn-sm" onclick="cart.checkout()">Pagar</button>
               </div>
+=======
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" href="index.html">
+      <i class="fas fa-spray-can-sparkles me-2 text-primary"></i>Perfulandia SPA
+    </a>
+
+    <!-- Botón mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú principal -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#men">Hombres</a></li>
+        <li class="nav-item"><a class="nav-link" href="#women">Mujeres</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+      </ul>
+
+      <!-- Carrito y Usuario -->
+      <div class="d-flex align-items-center gap-3">
+        <!-- Carrito -->
+        <div class="dropdown me-3">
+          <button class="btn btn-outline-primary position-relative" type="button" id="cartDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-shopping-cart fs-5"></i>
+            <span id="cart-count"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end p-3 cart-dropdown" style="min-width: 300px;"
+            aria-labelledby="cartDropdown">
+            <div id="cartItems" class="cart-items">
+              <p class="text-center empty-cart-message">Tu carrito está vacío</p>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <strong>Total:</strong>
+              <span class="fw-bold cart-total">$0.00</span>
+            </div>
+            <div class="d-grid gap-2 mt-3">
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='cart.html'">Ver carrito</button>
+              <button class="btn btn-success btn-sm" onclick="cart.checkout()">Pagar</button>
+>>>>>>> 30b60c9aad46883b587e0b9c06e584651589f35f
             </div>
           </div>
-          <div id="userSection">
-            <span class="user-greeting me-2">Hola, <span id="usernameDisplay"></span></span>
-            <a href="login.html" class="btn btn-outline-primary login-btn">Iniciar sesión</a>
-            <a href="admin.html" class="btn btn-sm btn-secondary ms-2 admin-link">Admin</a>
-            <button class="btn btn-outline-danger ms-2 logout-btn" style="display: none;" onclick="auth.logout()">Cerrar sesión</button>
-          </div>
+        </div>
+
+        <!-- Inicio de sesión / Cerrar sesión -->
+        <div id="userSection" class="d-flex align-items-center gap-2">
+          <span class="user-greeting me-2">Hola, <span id="usernameDisplay"></span></span>
+          <a href="login.html" class="btn btn-outline-primary btn-sm login-btn">Iniciar sesión</a>
+          <a href="admin.html" class="btn btn-sm btn-secondary admin-link">Admin</a>
+          <button class="btn btn-outline-danger btn-sm logout-btn" style="display: none;"
+            onclick="auth.logout()">Cerrar sesión</button>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Hero Carousel -->
   <div id="perfumeCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -206,46 +335,207 @@
       <div class="row g-4" id="featuredProducts">
         <!-- Products will be loaded dynamically -->
       </div>
+        <h4 id="Hombres" style="text-align: center;">Hombres</h4>
+
+<section>
+  <div class="product-list">
+
+    <div class="product-card">
+      <img src="images/SAUVAGEEAU.webp" alt="Dior Sauvage">
+      <div class="brand">DIOR</div>
+      <div class="title">Perfume Hombre Sauvage Eau de toilette</div>
+      <div class="price">$144.000</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★★</div>
+      <div class="reviews">(33)</div>
+      <button class="add-to-cart" onclick="addToCart('p1', 'Perfume Hombre Sauvage Eau de toilette', 144000, 'images/SAUVAGEEAU.webp')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/VersaceEros.jpg" alt="Versace Eros">
+      <div class="brand">VERSACE</div>
+      <div class="title">Eros 100ML EDT Hombre</div>
+      <div class="price">$60.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★☆</div>
+      <div class="reviews">(1323)</div>
+      <button class="add-to-cart" onclick="addToCart('p2', 'Eros 100ML EDT Hombre', 60990, 'images/VersaceEros.jpg')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/LeMaleElixir.webp" alt="Le Male Elixir Jean Paul Gaultier">
+      <div class="brand">JEAN PAUL GAULTIER</div>
+      <div class="title">Perfume Hombre Le Male Elixir Parfum 125ML</div>
+      <div class="price">$125.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★★</div>
+      <div class="reviews">(3160)</div>
+      <button class="add-to-cart" onclick="addToCart('p3', 'Le Male Elixir Parfum 125ML', 125990, 'images/LeMaleElixir.webp')">Agregar al Carro</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/LeBeauEDT.webp" alt="Le Beau Jean Paul Gaultier">
+      <div class="brand">JEAN PAUL GAULTIER</div>
+      <div class="title">Perfume Hombre Le Beau EDP 125ML</div>
+      <div class="price">$114.990</div>
+      <div class="tag">Disponible</div>
+      <div class="stars">★★★★☆</div>
+      <div class="reviews">(283)</div>
+      <button class="add-to-cart" onclick="addToCart('p4', 'Le Beau EDP 125ML', 114990, 'images/LeBeauEDT.webp')">Agregar al Carro</button>
+    </div>
+
+  </div>
+</section>
+  <!-- seccion mujeres -->
+           <h4 id="Mujeres" style="text-align: center;">Mujeres</h4>
+      
+<div class="product-list">
+  <div class="product-card">
+    <img src="images/RALPHLAUREN.webp" alt="RALPH LAUREN">
+    <div class="brand">RALPH LAUREN</div>
+    <div class="title">Perfume Mujer Ralph EDT 100ml Ralph Lauren</div>
+      <span class="price">$59.990</span>
+      <span class="old-price">$119.990</span>
+      <span class="discount">-50%</span>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(33)</div>
+    <button class="add-to-cart" onclick="addToCart('p5', 'EDT 100ml Ralph Lauren', 59990, 'images/RALPHLAUREN.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/RABANNE.webp" alt="RABANNE">
+    <div class="brand">RABANNE</div>
+    <div class="title">Perfume Mujer Fame Intense 80ML Refillable Rabanne</div>
+    <div class="price">$99.990
+      <span class="old-price">$129.990</span>
+      <span class="discount">-23%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(765)</div>
+    <button class="add-to-cart" onclick="addToCart('p6', 'Fame Intense 80ML', 99990, 'images/RABANNE.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/CAROLINAHERRRERA.webp" alt="CAROLINA HERRERA">
+    <div class="brand">CAROLINA HERRERA</div>
+    <div class="title">Perfume Mujer Carolina Herrera Edt 50Ml Carolina Herrera</div>
+    <div class="price">$53.990
+      <span class="old-price">$89.990</span>
+      <span class="discount">-40%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(642)</div>
+    <button class="add-to-cart" onclick="addToCart('p7', 'Carolina Herrera Edt 50Ml', 53990, 'images/CAROLINAHERRRERA.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/212.webp" alt="CAROLINA HERRERA">
+    <div class="brand">CAROLINA HERRERA</div>
+    <div class="title">Perfume Mujer 212 Heroes Edp 80Ml Carolina Herrera</div>
+    <div class="price">$119.990
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★☆</div>
+    <div class="reviews">(283)</div>
+    <button class="add-to-cart" onclick="addToCart('p8', '212 Heroes Edp 80Ml', 119990, 'images/212.webp')">Agregar al Carro</button>
+  </div>
+    </div>
+    <div class="product-list">
+  <div class="product-card">
+    <img src="images/VERSACEMUJER.webp" alt="Versace">
+    <div class="brand">VERSACE</div>
+    <div class="title">Perfume Mujer Yellow Diamond Intense EDP 90Ml Versace</div>
+      <span class="price">$69.990</span>
+      <span class="old-price">$110.990</span>
+      <span class="discount">-37%</span>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(334)</div>
+    <button class="add-to-cart" onclick="addToCart('p9', 'Yellow Diamond Intense EDP 90M', 69990, 'images/VERSACEMUJER.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/FERRAGAMO.webp" alt="FERRAGAMO">
+    <div class="brand">FERRAGAMO</div>
+    <div class="title">Perfume Mujer Signorina Edp 100Ml Ferragamo</div>
+    <div class="price">$100.300
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(715)</div>
+    <button class="add-to-cart" onclick="addToCart('p10', 'Signorina Edp 100Ml', 100300, 'images/FERRAGAMO.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/ARMANIMUJER.webp" alt="GIORGIO ARMANI">
+    <div class="brand">GIORGIO ARMANI</div>
+    <div class="title">Perfume Mujer Acqua Di Gioia Eau De Parfum 30ml Giorgio Armani</div>
+    <div class="price">$44.990
+      <span class="old-price">$63.990</span>
+      <span class="discount">-40%</span>
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★★</div>
+    <div class="reviews">(351)</div>
+    <button class="add-to-cart" onclick="addToCart('p11', 'Acqua Di Gioia Eau De Parfum 30mll', 44990, 'images/ARMANIMUJER.webp')">Agregar al Carro</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/VERSACEMUJER2.webp" alt="VERSACE">
+    <div class="brand">VERSACE</div>
+    <div class="title">Perfume Mujer Bright Crystal Parfum 90 ml Versace</div>
+    <div class="price">$152.990
+    </div>
+    <div class="tag">Disponible</div>
+    <div class="stars">★★★★☆</div>
+    <div class="reviews">(212)</div>
+    <button class="add-to-cart" onclick="addToCart('p12', 'Crystal Parfum 90 ml', 152990, 'images/VERSACEMUJER2.webp')">Agregar al Carro</button>
+  </div>
     </div>
   </section>
 
   <!-- Categories -->
   <section class="py-5 bg-light">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Nuestras Categorías</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="category-card" id="men">
-            <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/img/6fe77fcad9614c799944a901d1cc568a/8f93bb43-e992-4047-adaf-b0f529545c31.png?x-oss-process=image/resize,w_640,m_lfit/format,webp')">
-              <div class="category-overlay">
-                <h3>Hombres</h3>
-                <a href="#" class="btn btn-outline-light">Ver colección</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="category-card" id="women">
-            <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/sd-gen-save-img/299151556-ff000c861d12edf337d54500a680afcb565835b351cba338e2ee91a38e4ae99a.png?x-oss-process=image/resize,w_764,m_lfit/format,webp')">
-              <div class="category-overlay">
-                <h3>Mujeres</h3>
-                <a href="#" class="btn btn-outline-light">Ver colección</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="category-card">
-            <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/img/4b169d20e5af45b09a4303580b8b718c/3133a88e154e2ff93559ecd38955b2a94d729c4ea01aafebbcc18935b097155a.png?x-oss-process=image/resize,w_640,m_lfit/format,webp')">
-              <div class="category-overlay">
-                <h3>Unisex</h3>
-                <a href="#" class="btn btn-outline-light">Ver colección</a>
-              </div>
-            </div>
-          </div>
+<div class="row g-4 justify-content-center">
+  <!-- Hombres -->
+  <div class="col-md-4">
+    <div class="category-card d-flex flex-column justify-content-end h-100">
+      <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/img/6fe77fcad9614c799944a901d1cc568a/8f93bb43-e992-4047-adaf-b0f529545c31.png?x-oss-process=image/resize,w_640,m_lfit/format,webp')">
+        <div class="category-overlay">
+          <h3>Hombres</h3>
+          <a href="#Hombres" class="btn btn-outline-light">Ver colección</a> 
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Mujeres -->
+  <div class="col-md-4">
+    <div class="category-card d-flex flex-column justify-content-end h-100">
+      <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/sd-gen-save-img/299151556-ff000c861d12edf337d54500a680afcb565835b351cba338e2ee91a38e4ae99a.png?x-oss-process=image/resize,w_764,m_lfit/format,webp')">
+        <div class="category-overlay">
+          <h3>Mujeres</h3>
+          <a href="#Mujeres" class="btn btn-outline-light">Ver colección</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unisex -->
+  <div class="col-md-4">
+    <div class="category-card d-flex flex-column justify-content-end h-100">
+      <div class="category-image" style="background-image: url('https://liblibai-online.liblib.cloud/img/4b169d20e5af45b09a4303580b8b718c/3133a88e154e2ff93559ecd38955b2a94d729c4ea01aafebbcc18935b097155a.png?x-oss-process=image/resize,w_640,m_lfit/format,webp')">
+        <div class="category-overlay">
+          <h3>Unisex</h3>
+          <a href="#" class="btn btn-outline-light">Ver colección</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </section>
 
   <!-- New Arrivals -->
@@ -389,6 +679,7 @@
         }
       }
     };
+<<<<<<< HEAD
 
     // Sistema de carrito
     const cart = {
@@ -491,6 +782,117 @@
       }
     };
 
+=======
+    // Sistema de carrito
+const cart = {
+  items: JSON.parse(localStorage.getItem('cartItems')) || [],
+
+  save() {
+    localStorage.setItem('cartItems', JSON.stringify(this.items));
+    this.updateUI();
+  },
+
+  add(product) {
+    const existing = this.items.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      this.items.push({ ...product, quantity: 1 });
+    }
+    this.save();
+    this.showAddedToCartModal(product);
+  },
+
+  remove(productId) {
+    this.items = this.items.filter(item => item.id !== productId);
+    this.save();
+  },
+
+  updateQuantity(productId, quantity) {
+    const item = this.items.find(item => item.id === productId);
+    if (item && quantity > 0) {
+      item.quantity = quantity;
+      this.save();
+    }
+  },
+
+  clear() {
+    this.items = [];
+    this.save();
+  },
+
+  total() {
+    return this.items.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+  },
+
+  count() {
+    return this.items.reduce((sum, item) => sum + item.quantity, 0);
+  },
+
+  updateUI() {
+    const cartCount = document.querySelector('.cart-count');
+    const cartTotal = document.querySelector('.cart-total');
+    const cartItemsContainer = document.getElementById('cartItems');
+
+    // Actualizar contador y total
+    if (cartCount) cartCount.textContent = this.count();
+    if (cartTotal) cartTotal.textContent = $$(this.total());
+
+    // Actualizar contenido del dropdown del carrito
+    if (cartItemsContainer) {
+      cartItemsContainer.innerHTML = '';
+
+      if (this.items.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-center empty-cart-message">Tu carrito está vacío</p>';
+        return;
+      }
+
+      this.items.forEach(item => {
+        const el = document.createElement('div');
+        el.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-2');
+        el.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            $${parseFloat(item.price).toFixed(2)} x ${item.quantity}
+          </div>
+          <button class="btn btn-sm btn-danger" onclick="cart.remove('${item.id}')">
+            <i class="fas fa-trash"></i>
+          </button>
+        `;
+        cartItemsContainer.appendChild(el);
+      });
+    }
+  },
+
+  showAddedToCartModal(product) {
+    const modalElement = document.getElementById('addedToCartModal');
+    if (!modalElement) return;
+
+    const modal = new bootstrap.Modal(modalElement);
+    const productName = document.getElementById('addedProductName');
+    if (productName) productName.textContent = product.name;
+    modal.show();
+  },
+
+  checkout() {
+    if (this.items.length === 0) {
+      alert('Tu carrito está vacío');
+      return;
+    }
+
+    if (!auth.currentUser) {
+      alert('Por favor inicia sesión para continuar con la compra');
+      window.location.href = 'login.html?redirect=cart.html';
+      return;
+    }
+
+    const totalAmount = parseFloat(this.total()).toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
+    alert('Compra realizada por ${totalAmount}. ¡Gracias por tu compra!');
+    this.clear();
+    window.location.href = 'index.html';
+  }
+};
+>>>>>>> 30b60c9aad46883b587e0b9c06e584651589f35f
     // Productos
     const products = {
       featured: [
@@ -615,7 +1017,11 @@
       if (product) {
         document.querySelector('.product-name').textContent = product.name;
         document.querySelector('.product-brand').textContent = product.brand;
+<<<<<<< HEAD
         document.querySelector('.product-price').textContent = `$${product.price.toLocaleString('es-CL')}`;
+=======
+        document.querySelector('.product-price').textContent = $$(product.price.toLocaleString('es-CL'));
+>>>>>>> 30b60c9aad46883b587e0b9c06e584651589f35f
         document.querySelector('.product-image').src = product.image;
         document.querySelector('.size-value').textContent = product.size;
         document.querySelector('.product-description').textContent = product.description;
@@ -713,5 +1119,54 @@
       }
     });
   </script>
+<<<<<<< HEAD
+=======
+
+  <!-- Modal de producto agregado al carrito -->
+  <div class="modal fade" id="addedToCartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Producto agregado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
+          <p><span id="addedProductName"></span> ha sido agregado a tu carrito.</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
+          <button type="button" class="btn btn-primary" onclick="window.location.href='cart.html'">Ver carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function addToCart(id, name, price, image) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const index = cartItems.findIndex(item => item.id === id);
+
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.push({
+        id,
+        name,
+        price,
+        image,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    alert($(name, "fue agregado al carrito"));
+  }
+  
+</script>
+
+  <script src="js/app_in.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/app_ca.js"></script>
+>>>>>>> 30b60c9aad46883b587e0b9c06e584651589f35f
 </body>
 </html>
