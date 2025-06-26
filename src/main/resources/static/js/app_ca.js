@@ -17,7 +17,7 @@ const cartFrontend = {
 
   // Agregar producto al carrito vía backend
   addToCart(id) {
-    fetch('${cartApiUrl}/agregar/${id}', { method: "POST" })
+    fetch(($(cartApiUrl)/agregar/$(id)), { method: "POST" })
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -33,7 +33,7 @@ const cartFrontend = {
 
   // Eliminar producto del carrito
   removeFromCart(productId) {
-    fetch('${cartApiUrl}/eliminar/${productId}', { method: "DELETE" })
+    fetch($(cartApiUrl)/eliminar/$(productId), { method: "DELETE" })
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -48,7 +48,7 @@ const cartFrontend = {
 
   // Vaciar carrito
   clearCart() {
-    fetch('${cartApiUrl}/vaciar', { method: "DELETE" })
+    fetch($(cartApiUrl)/vaciar, { method: "DELETE" })
       .then(response => {
         if (response.ok) {
           this.items = [];
@@ -62,7 +62,7 @@ const cartFrontend = {
 
   // Obtener cantidad total de productos
   getTotalItems() {
-    fetch('${cartApiUrl}/total')
+    fetch($(cartApiUrl)/total)
       .then(response => response.json())
       .then(data => {
         document.querySelector(".cart-count").textContent = data;
