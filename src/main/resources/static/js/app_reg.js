@@ -15,7 +15,7 @@ function registrar() {
   };
 
   // URL del endpoint de registro
-  const urlRegistro = 'http://10.155.64.162:8080/api/v1/usuario';
+  const urlRegistro = 'http://192.168.119.154:8080/api/v1/usuario';
 
   // Realizar la petición POST
   fetch(urlRegistro, {

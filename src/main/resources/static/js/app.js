@@ -1,5 +1,5 @@
-const API_URL = "http://10.155.64.162:8080/api/v1/perfumes";
-const CARRITO_API = "http://10.155.64.162:8080/api/v1/carrito";
+const API_URL = "http://192.168.119.154:8080/api/v1/perfumes";
+const CARRITO_API = "http://192.168.119.154:8080/api/v1/carrito";
 
 // ✅ Actualizar el contador del carrito
 async function actualizarContadorCarrito() {

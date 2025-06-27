@@ -9,16 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
@@ -34,21 +25,17 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.fullstack.perfulandiaSPA.Assemblers.perfumeModelAssembler;
-import com.fullstack.perfulandiaSPA.Controller.perfumeController;
-
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.MediaTypes;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("http://10.155.64.162:8080/api/v2/perfumes")
+@RequestMapping("http://192.168.119.154:8080/api/v2/perfumes")
 @Tag(name = "Perfume", description = "Operaciones sobre el catalogo de Perfumes")
 public class perfumeControllerV2 {
 

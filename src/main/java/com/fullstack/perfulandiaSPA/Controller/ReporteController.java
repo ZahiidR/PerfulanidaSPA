@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 
 @RestController
-@RequestMapping("http://10.155.64.162:8080/api/v1/reporte")
+@RequestMapping("http://192.168.119.154:8080/api/v1/reporte")
 @Tag(name = "Reporte", description = "Operaciones sobre el reporte de Perfumes")
 public class ReporteController {
      @Autowired

@@ -1,7 +1,6 @@
 package com.fullstack.perfulandiaSPA.Assemblers;
 
 //Importar las clases necesarias para el modelo y controlador
-import com.fullstack.perfulandiaSPA.Model.Carrito;
 import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Controller.carritoControllerV2;
 

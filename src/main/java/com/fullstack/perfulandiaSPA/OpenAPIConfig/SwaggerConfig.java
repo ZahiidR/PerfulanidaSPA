@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
     public OpenAPI perfulandiaSPAOpenAPI() {
-        return new OpenAPI().info(new Info().title("API - Gestion de Perfumes").description("Microservicios API REST para gestionar catalogo de perfumes, usuarios y carrito").
-        version("v2.0"));
+        return new OpenAPI().info(new Info()
+                .title("API - Gestion de Perfumes")
+                .description("Microservicios API REST para gestionar catalogo de perfumes, usuarios y carrito")
+                .version("v2.0"));
     }
-    
+
 }
