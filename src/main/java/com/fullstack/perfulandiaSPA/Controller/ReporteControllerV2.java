@@ -66,9 +66,9 @@ public class ReporteControllerV2 {
     @Operation(summary = "Actualizar informacion del reporte", 
     description = "Actualiza los detalles del reporte")
     @PutMapping(value = "{id}", produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<EntityModel<Reporte>> actualizarReporte(@PathVariable int id, @RequestBody ControlStock r) {
+    public ResponseEntity<EntityModel<Reporte>> actualizarReporte(@PathVariable int id, @RequestBody Reporte r) {
         r.setId(id);
-        Reporte actualizado = reporteService.updateReporte(r);
+        Reporte actualizado = reporteService.deleteReporte(r);
         return ResponseEntity.ok(assembler.toModel(actualizado));
     }
 
@@ -86,4 +86,6 @@ public class ReporteControllerV2 {
     public int totalReporteV2() {
         return reporteService.totalReporteV2();
     }
+
+    
 }
