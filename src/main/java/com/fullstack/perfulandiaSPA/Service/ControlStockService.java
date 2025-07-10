@@ -1,6 +1,5 @@
 package com.fullstack.perfulandiaSPA.Service;
 import com.fullstack.perfulandiaSPA.Model.ControlStock;
-import com.fullstack.perfulandiaSPA.Repository.PerfumesRepository;
 import com.fullstack.perfulandiaSPA.Repository.controlstockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
