@@ -1,4 +1,4 @@
-package com.fullstack.perfulandiaSPA.Controller;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import java.util.ArrayList;
 import java.util.List;
 

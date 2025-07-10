@@ -1,4 +1,4 @@
-package com.fullstack.perfulandiaSPA.Controller;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import com.fullstack.perfulandiaSPA.Assemblers.carritoModelAssembler;
 import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Service.perfumeService;

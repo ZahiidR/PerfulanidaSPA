@@ -1,8 +1,6 @@
-package com.fullstack.perfulandiaSPA.Controller;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import com.fullstack.perfulandiaSPA.Model.ControlStock;
-import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Service.ControlStockService;
-import com.fullstack.perfulandiaSPA.Service.perfumeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

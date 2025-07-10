@@ -1,4 +1,5 @@
 package com.fullstack.perfulandiaSPA.Controller;
+import com.fullstack.perfulandiaSPA.Assemblers.Controller.ReporteController;
 import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Model.Reporte;
 import com.fullstack.perfulandiaSPA.Service.ReporteService;

@@ -1,5 +1,6 @@
 package com.fullstack.perfulandiaSPA.Controller;
 
+import com.fullstack.perfulandiaSPA.Assemblers.Controller.UsuarioController;
 import com.fullstack.perfulandiaSPA.Model.Usuario;
 import com.fullstack.perfulandiaSPA.Service.usuarioService;
 // Importar las clases necesarias para las pruebas de integración

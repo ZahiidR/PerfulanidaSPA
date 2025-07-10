@@ -1,4 +1,4 @@
-package com.fullstack.perfulandiaSPA.Controller;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import com.fullstack.perfulandiaSPA.Model.Reporte;
 import com.fullstack.perfulandiaSPA.Service.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;

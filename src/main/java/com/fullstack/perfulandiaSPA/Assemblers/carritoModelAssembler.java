@@ -1,8 +1,8 @@
 package com.fullstack.perfulandiaSPA.Assemblers;
 
+import com.fullstack.perfulandiaSPA.Assemblers.Controller.carritoControllerV2;
 //Importar las clases necesarias para el modelo y controlador
 import com.fullstack.perfulandiaSPA.Model.Perfumes;
-import com.fullstack.perfulandiaSPA.Controller.carritoControllerV2;
 
 //Importar la clase static para crear los enlaces HATEOAS
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;

@@ -1,5 +1,4 @@
-package com.fullstack.perfulandiaSPA.Controller;
-import com.fullstack.perfulandiaSPA.Model.ControlStock;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import com.fullstack.perfulandiaSPA.Model.Reporte;
 import com.fullstack.perfulandiaSPA.Service.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class ReporteControllerV2 {
     @PutMapping(value = "{id}", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<Reporte>> actualizarReporte(@PathVariable int id, @RequestBody Reporte r) {
         r.setId(id);
-        Reporte actualizado = reporteService.deleteReporte(r);
+        Reporte actualizado = reporteService.updateReporte(r);
         return ResponseEntity.ok(assembler.toModel(actualizado));
     }
 

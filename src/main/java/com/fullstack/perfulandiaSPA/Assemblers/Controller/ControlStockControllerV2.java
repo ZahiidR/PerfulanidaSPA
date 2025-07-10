@@ -1,8 +1,6 @@
-package com.fullstack.perfulandiaSPA.Controller;
+package com.fullstack.perfulandiaSPA.Assemblers.Controller;
 import com.fullstack.perfulandiaSPA.Model.ControlStock;
-import com.fullstack.perfulandiaSPA.Model.Perfumes;
 import com.fullstack.perfulandiaSPA.Service.ControlStockService;
-import com.fullstack.perfulandiaSPA.Service.perfumeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,18 +51,18 @@ public class ControlStockControllerV2 {
             linkTo(methodOn(ControlStockControllerV2.class).listarControlStocks()).withSelfRel());
     }
 
-    @Operation(summary = "Agregar stock", 
+    @Operation(summary = "Agregar stock",
     description = "Agrega stock de los perfumes")
     @PostMapping(value = "/agregar", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<ControlStock>> agregarControlStock(@RequestBody ControlStock controlStock) {
         ControlStock crear = controlserv.saveControlStock(controlStock);
-        return ResponseEntity.created(linkTo(methodOn(ControlStockControllerV2.class).agregarControlStock(crear.getId())).toUri()).body(assembler.toModel(crear));
+        return ResponseEntity.created(linkTo(methodOn(ControlStockControllerV2.class).buscarControlStock(crear.getId())).toUri()).body(assembler.toModel(crear));
     }
 
-    @Operation(summary = "Buscar stock por ID", 
-    description = "Busca stock especifico por ID")    
+    @Operation(summary = "Buscar stock por ID",
+    description = "Busca stock especifico por ID")
     @GetMapping( value = "/{id}", produces = MediaTypes.HAL_JSON_VALUE)
-    public EntityModel<ControlStock> buscarLibro(@PathVariable int id){
+    public EntityModel<ControlStock> buscarControlStock(@PathVariable int id){
         ControlStock controlStock = controlserv.getControlStocks(id);
         return assembler.toModel(controlStock);
     }
