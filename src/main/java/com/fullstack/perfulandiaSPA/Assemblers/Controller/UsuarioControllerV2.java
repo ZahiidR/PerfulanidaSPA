@@ -30,7 +30,7 @@ import org.springframework.http.ResponseEntity;
 
 
 @RestController
-@RequestMapping("http://192.168.119.154:8080/api/v2/usuarios") //url base para peticiones
+@RequestMapping("/api/v2/usuarios") //url base para peticiones
 @CrossOrigin
 @Tag(name = "Usuario", description = "Operaciones sobre el usuario")
 public class UsuarioControllerV2 {
